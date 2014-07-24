@@ -92,7 +92,7 @@ public class Test {
 			*/
 			List<Article> articleList =iUserOperation.selectArticlByUid(1);
 			for (Article article : articleList) {
-				System.out.println("Aid:"+article.getId()+",Title:"+article.getTitle()+",content:"+article.getContent()+",uid:"+article.getUser().getId());
+				System.out.println("--Aid:"+article.getId()+",Title:"+article.getTitle()+",content:"+article.getContent()+",uid:"+article.getUser().getId());
 			}
 		} finally {
 			// TODO: handle exception
