@@ -12,8 +12,15 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Test {
+	public static ApplicationContext applicationContext;
+	static {
+		applicationContext = new ClassPathXmlApplicationContext("config/applicationContext.xml");
+	}
+	/*
 	public static SqlSessionFactory sqlSessionFactory;
 	public static Reader reader;
 	
@@ -28,27 +35,20 @@ public class Test {
 		}
 	}
 	
-	
 
-	/**
-	 * @return the sqlSessionFactory
-	 */
 	public SqlSessionFactory getSqlSessionFactory() {
 		return sqlSessionFactory;
 	}
 
-
-
-	/**
-	 * @param sqlSessionFactory the sqlSessionFactory to set
-	 */
 	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
 		this.sqlSessionFactory = sqlSessionFactory;
 	}
-
+*/
 
 
 	public static void main(String[] args) {
+		
+		/*
 		// TODO Auto-generated method stub
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
@@ -90,6 +90,7 @@ public class Test {
 						+ user.getUserage() + ":" + user.getUseraddress());
 			}
 			*/
+		/*
 			List<Article> articleList =iUserOperation.selectArticlByUid(1);
 			for (Article article : articleList) {
 				System.out.println("--Aid:"+article.getId()+",Title:"+article.getTitle()+",content:"+article.getContent()+",uid:"+article.getUser().getId());
@@ -101,6 +102,14 @@ public class Test {
 		
 		
 		
+		*/
+		
+		
+		IUserOperation iUserOperation=(IUserOperation) applicationContext.getBean("userMapper");
+		List<Article> articleList =iUserOperation.selectArticlByUid(1);
+		for (Article article : articleList) {
+			System.out.println("--Aid:"+article.getId()+",Title:"+article.getTitle()+",content:"+article.getContent()+",uid:"+article.getUser().getId());
+		}
 		
 
 	}
